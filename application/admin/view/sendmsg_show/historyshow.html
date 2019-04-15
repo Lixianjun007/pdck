@@ -33,15 +33,15 @@ and open the template in the editor.
         <li class="am-active">{$title}</li>
     </ol>
     <div class="tpl-portlet-components">
-        <div class="tpl-block ">
-            <table class="am-table am-table-bordered am-table-striped am-table-hover">
+        <div class="tpl-block am-scrollable-horizontal">
+            <table class="am-table am-table-bordered am-table-striped am-table-hover am-text-sm">
                 <thead>
                 <tr>
                     <th>序号</th>
-                    <th>发货日期</th>
+                    <th class="am-hide-sm-only">发货日期</th>
                     <th>姓名/手机</th>
                     <th>货号</th>
-                    <th>发货地</th>
+                    <th class="am-hide-sm-only">发货地</th>
                     <th>短信发送时间</th>
                 </tr>
                 </thead>
@@ -49,10 +49,10 @@ and open the template in the editor.
                 {volist name='data' id='item'}
                 <tr>
                     <td> {$item.id}</td>
-                    <td> {$item.date}</td>
+                    <td class="am-hide-sm-only"> {$item.date}</td>
                     <td> {$item.name} / {$item.phone}</td>
                     <td> {$item.number}</td>
-                    <td> {$item.city}</td>
+                    <td class="am-hide-sm-only"> {$item.city}</td>
                     <td> {$item.post_date}</td>
                 </tr>
                 {/volist}
