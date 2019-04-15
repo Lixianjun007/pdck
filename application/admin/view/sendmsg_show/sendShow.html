@@ -24,9 +24,25 @@ and open the template in the editor.
                     <legend>发送短信</legend>
 
                     <div class="am-form-group">
-                        <label for="doc-ipt-pwd-1">义乌发货日期</label>
-                        <input type="text" class="am-form-field" id="doc-ipt-pwd-1" placeholder="义乌发货日期" data-am-datepicker readonly required />
+                        <label for="doc-select-1">发货地</label>
+                        <select id="doc-select-1" required min="1" >
+                            <option value="0">请选择发货地</option>
+                            <option value="1">义乌</option>
+                            <option value="2">上海</option>
+                        </select>
+                        <span class="am-form-caret"></span>
                     </div>
+
+
+                    <div class="am-form-group">
+                        <label for="doc-ipt-pwd-1">发货日期</label>
+                        <input type="text" class="am-form-field" id="doc-ipt-pwd-1" placeholder="发货日期" data-am-datepicker readonly required />
+                    </div>
+                    <div class="am-form-group">
+                        <label for="doc-ipt-email-2">货号</label>
+                        <input type="text" class="" minlength="1" id="doc-ipt-email-2" placeholder="货号">
+                    </div>
+
                     <div class="am-form-group">
                         <label for="doc-ipt-email-10">收货人手机号</label>
                         <input type="text" class="" minlength="5" id="doc-ipt-email-10" placeholder="收货人手机号">
@@ -44,12 +60,19 @@ and open the template in the editor.
             </div>
         </div>
 
-
     </div>
 
-
-
-
+    <div class="am-modal am-modal-alert" tabindex="-1" id="my-alerts">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd">提醒</div>
+            <div class="am-modal-bd">
+                添加成功！
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+            </div>
+        </div>
+    </div>
 
 </div>
 </div>

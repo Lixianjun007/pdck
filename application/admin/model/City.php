@@ -12,7 +12,7 @@ use think\Model;
 class City extends Model {
 
     protected $resultSetType = 'collection';
-//    protected $table = 'city';
+    protected $table = 'city';
 
     public function getcityInfo($id = false, $cityName = false, $cityPy = false) {
         
@@ -21,7 +21,10 @@ class City extends Model {
     public function getcityIdByPY($citypy){
         $result = $this->where(['cityPy' => $citypy])->column('id');
         return $result[0];
-        
+    }
+
+    public function getCityName($id){
+        return $this->where(['id' => $id])->cache(true, 300)->find();
     }
 
 }

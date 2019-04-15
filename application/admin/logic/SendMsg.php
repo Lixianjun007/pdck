@@ -11,6 +11,8 @@ namespace app\admin\logic;
 
 
 
+use app\admin\model\City;
+
 class SendMsg extends \app\admin\model\SendMsg
 {
 
@@ -20,12 +22,23 @@ class SendMsg extends \app\admin\model\SendMsg
         $phone = $params['phone'];
         $date = $params['date'];
         $number = $params['number'];
-        $is_post = $params['post'];
-        $this->addData($name, $phone, $number, $date);
-        if($is_post){
-            $this->postData($this->id);
+        $city = $params['city'];
+//        $is_post = $params['post'];
+        $this->addData($name, $phone, $number, $date, $city);
+
+        return true;
+    }
+
+    public function getMsgDatas($params){
+        $result = $this->getDataLists($params);
+        if($result->count()){
+            $cityModel = new City();
+            foreach ($result as $k => $v){
+                $v['city'] = $cityModel->getCityName($v['city_id'])->city_name;
+            }
         }
-        return 11213;
+
+        return $result;
     }
 
 }

@@ -16,6 +16,8 @@ class SendMsg extends Model
 {
     protected $table = 'send_msg';
 
+    protected $resultSetType = 'collection';
+
     public function _getNow(){
         return date('Y-m-d H:i:s');
     }
@@ -31,9 +33,10 @@ class SendMsg extends Model
      * Date: 2019/4/15
      * Time: 15:33
      */
-    public function addData($name, $phone, $number, $date)
+    public function addData($name, $phone, $number, $date, $city = 1)
     {
         $data = [
+            'city_id'    => $city,
             'name'       => $name,
             'phone'      => $phone,
             'number'     => $number,
@@ -59,6 +62,11 @@ class SendMsg extends Model
             'post_date' => $this->_getNow(),
         ];
         return $this->isUpdate(true)->save($data);
+    }
+
+    public function getDataLists($params){
+        $resutl = $this->where(1)->order('id desc')->paginate(10);
+        return $resutl;
     }
 
 

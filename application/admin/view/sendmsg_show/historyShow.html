@@ -6,6 +6,24 @@ and open the template in the editor.
 -->
 {include file="public/head" /}
 {include file="public/left" /}
+<style>
+
+    #pic_list
+    {
+        display:block;
+        white-space:nowrap;
+        width:500px;
+        overflow:auto;
+    }
+    #pic_list li
+    {
+        /*width:80px;*/
+        height:80px;
+        margin:3px;
+        /*background:red;*/
+        display:inline-block;
+    }
+</style>
 <div class="tpl-content-wrapper">
     <div class="tpl-content-page-title">
         {$title}
@@ -23,43 +41,30 @@ and open the template in the editor.
                     <th>发货日期</th>
                     <th>姓名/手机</th>
                     <th>货号</th>
+                    <th>发货地</th>
                     <th>短信发送时间</th>
                 </tr>
                 </thead>
-                <tbody>
-
-                <tr class="">
-                    <td></td>
-                    <td>2012-10-01</td>
-                    <td>小袁/13439483372</td>
-                    <td>50-3</td>
-                    <td>2012-10-01 12:34:22</td>
+                <tbody id="form-data">
+                {volist name='data' id='item'}
+                <tr>
+                    <td> {$item.id}</td>
+                    <td> {$item.date}</td>
+                    <td> {$item.name} / {$item.phone}</td>
+                    <td> {$item.number}</td>
+                    <td> {$item.city}</td>
+                    <td> {$item.post_date}</td>
                 </tr>
-                <tr class="">
-                    <td></td>
-                    <td>2012-10-01</td>
-                    <td>小袁/13439483372</td>
-                    <td>50-3</td>
-                    <td>2012-10-01 12:34:22</td>
-                </tr>
-                <tr class="">
-                    <td></td>
-                    <td>2012-10-01</td>
-                    <td>小袁/13439483372</td>
-                    <td>50-3</td>
-                    <td>2012-10-01 12:34:22</td>
-                </tr>
-                <tr class="">
-                    <td></td>
-                    <td>2012-10-01</td>
-                    <td>小袁/13439483372</td>
-                    <td>50-3</td>
-                    <td>2012-10-01 12:34:22</td>
-                </tr>
+                {/volist}
 
 
                 </tbody>
             </table>
+            <!--<div class="am-cf">-->
+                <div id="pic_list">
+                    {$page}
+                </div>
+            <!--</div>-->
         </div>
 
     </div>
@@ -68,3 +73,4 @@ and open the template in the editor.
 </div></div>
 {include file="public/foot" /}
 <script src="/admin/js/index.js"></script>
+<!--<script src="/admin/js/historyShow.js"></script>-->
