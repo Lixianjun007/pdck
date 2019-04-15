@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+{include file="public/head" /} 
+{include file="public/left" /} 
+<div class="tpl-content-wrapper">
+    <div class="tpl-content-page-title">
+        {$title}
+    </div>
+    <ol class="am-breadcrumb">
+        <li><a href="admin/index" class="am-icon-home">首页</a></li>
+        <li class="am-active">{$title}</li>
+    </ol>
+    <div class="tpl-portlet-components">
+        <div class="tpl-block ">
+
+            <div class="am-g tpl-amazeui-form">
+
+
+                <div class="am-u-sm-12 am-u-md-9">
+                    <form id="forms" class="am-form am-form-horizontal am-u-sm-12">
+                        <fieldset>
+                            <div class="am-form-group">
+                                <label for="postname" class="am-u-sm-3 am-form-label am-hide-sm-only">*发货人姓名</label>
+                                <div class="am-u-sm-6 am-u-md-3 lxjerror">
+                                    <input type="text" id="postname" name="postname" placeholder="发货人"<?php if(isset($infolist)){?> value="{$infolist['postname']}"  <?php }?>   data-validation-message="发货人姓名不能为空！" required/>
+                                </div>
+
+                                <label for="postphone" class="am-u-sm-3 am-form-label am-hide-sm-only">*发货人电话</label>
+                                <div class="am-u-sm-6 am-u-md-3 lxjerror">
+                                    <input type="text" pattern="^\d{6,14}$"   id="postphone" name="postphone" placeholder="电话" <?php if(isset($infolist)){?> value="{$infolist['postphone']}"  <?php }?>  data-validation-message="请填写正确的号码！"  required/>
+                                </div>
+                            </div>
+                            <hr/>
+                            <div class="am-form-group">
+                                <label for="getname" class="am-u-sm-3 am-form-label am-hide-sm-only">*收货人姓名</label>
+                                <div class="am-u-sm-6 am-u-md-3 lxjerror">
+                                    <input type="text" id="getname" name="getname" placeholder="收货人"  <?php if(isset($infolist)){?> value="{$infolist['getname']}"  <?php }?>  data-validation-message="收货人姓名不能为空！" required/>
+                                </div>
+
+                                <label for="getphone" class="am-u-sm-3 am-form-label am-hide-sm-only">*发货人电话</label>
+                                <div class="am-u-sm-6 am-u-md-3 lxjerror">
+                                    <input type="text" pattern="^\d{6,14}$"   id="getphone" name="getphone" placeholder="电话"  <?php if(isset($infolist)){?> value="{$infolist['getphone']}"  <?php }?> data-validation-message="请填写正确的号码！"  required/>
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <label for="money" class="am-u-sm-3 am-form-label am-hide-sm-only">*运费 / Money</label>
+                                <div class="am-u-sm-6 am-u-md-3 lxjerror">
+                                    <input type="text" pattern="^\d{0,14}$" data-validation-message="请填写运费！" name="money" <?php if(isset($infolist)){?> value="{$infolist['money']}"  <?php }?> id="money" placeholder="运费" required/>
+                                </div>
+
+                                <label for="number" class="am-u-sm-3 am-form-label am-hide-sm-only">*件数</label>
+                                <div class="am-u-sm-6 am-u-md-3 lxjerror">
+                                    <input type="text"  pattern="[0-9]*" name="number" id="number" <?php if(isset($infolist)){?> value="{$infolist['number']}"  <?php }?> placeholder="件数" data-validation-message="请填写件数！" required/>
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+
+                                <label for="getcityid" class="am-u-sm-3 am-form-label am-hide-sm-only">*收货地</label>
+                                <div class="am-u-sm-6 am-u-md-3">
+                                    <select name="getcityid" id="getcityid" data-am-selected="{searchBox: 0, btnWidth: '100%'}">
+                                        {volist name='citylist' id='items'}
+                                        <option value="{$items.id}"   <?php if(isset($infolist) && $infolist['getcity_id'] == $items['id']){?>  selected="selected" <?php }?> >{$items.cityName}</option>
+                                        {/volist}
+                                        <!--                                    <option value="a">现付</option>
+                                        <option value="b">到付</option>-->
+                                    </select>
+                                </div>
+                                <label for="paymethod" class="am-u-sm-3 am-form-label am-hide-sm-only">*到付 / 现付</label>
+                                <div class="am-u-sm-6 am-u-md-3">
+                                    <select name="paymethod" id="paymethod" data-am-selected="{searchBox: 0, btnWidth: '100%'}" >
+                                        <option value="1"  <?php if(isset($infolist) && $infolist['paymethod'] == 1){?>  selected="selected" <?php }?>   >现付</option>
+                                        <option value="2"  <?php if(isset($infolist) && $infolist['paymethod'] == 2){?>  selected="selected" <?php }?>   >到付</option>
+                                        <option value="3"  <?php if(isset($infolist) && $infolist['paymethod'] == 3){?>  selected="selected" <?php }?> >月结</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="am-form-group">
+                                <label for="address" class="am-u-sm-3 am-form-label">地址</label>
+                                <div class="am-u-sm-9 am-u-md-9">
+                                    <input type="text" name="address" <?php if(isset($infolist)){?> value="{$infolist['address']}"  <?php }?> id="address" placeholder="地址">
+                                           <small>如果直送，请填写地址...</small>
+                                </div>
+                            </div>
+
+                            <hr/>
+                            <div class="am-form-group">
+
+                                <label for="weight" class="am-u-sm-3 am-form-label">重量</label>
+                                <div class="am-u-sm-3">
+                                    <input type="text" pattern="[0-9]*" name="weight" id="weight" placeholder="重量">
+                                </div>
+                                <label for="volume" class="am-u-sm-3 am-form-label">体积</label>
+                                <div class="am-u-sm-3">
+                                    <input type="text" pattern="[0-9]*" name="volume" id="volume" placeholder="体积">
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <label for="zhongzhuan" class="am-u-sm-3 am-form-label">中转费</label>
+                                <div class="am-u-sm-3">
+                                    <input type="text"  pattern="[0-9]*" name="zhongzhuan" id="zhongzhuan" <?php if(isset($infolist)){?> value="{$infolist['zhongzhuan']}"  <?php }?> placeholder="中转费 / Name">
+                                </div>
+                                <label for="zhida" class="am-u-sm-3 am-form-label">直达费</label>
+                                <div class="am-u-sm-3">
+                                    <input type="text" pattern="[0-9]*" name="zhida" id="zhida" <?php if(isset($infolist)){?> value="{$infolist['zhida']}"  <?php }?>  placeholder="中转费">
+                                </div>
+                            </div>
+                            <input type="text"  id='goods_id' style="display: none" <?php if(isset($infolist)){?> value="{$infolist['id']}"  <?php }?>  >
+                                   <div class="am-form-group">
+                                <div class="am-u-sm-3 am-u-sm-push-6">
+                                    <button type="button" class="am-btn am-btn-primary am-round" onclick="submits('{$start}')">提交</button>
+                                    <?php if(!isset($infolist)){?> 
+                                    <button type="reset" class="am-btn am-btn-default am-round">重置</button>
+                                    <?php }?>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div></div>
+{include file="public/foot" /}
+<script src="/admin/js/index.js"></script>
+<script src="/admin/js/addgoods.js"></script>
+

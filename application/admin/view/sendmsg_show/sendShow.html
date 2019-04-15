@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+{include file="public/head" /}
+{include file="public/left" /}
+<div class="tpl-content-wrapper">
+    <div class="tpl-content-page-title">
+        {$title}
+    </div>
+    <ol class="am-breadcrumb">
+        <li><a href="admin/index" class="am-icon-home">首页</a></li>
+        <li class="am-active">{$title}</li>
+    </ol>
+    <!--收货人姓名，日期，货号，-->
+    <div class="tpl-portlet-components">
+        <div class="tpl-block ">
+            <div class="am-g tpl-amazeui-form">
+
+            <form class="am-form" id="doc-vld-msg">
+                <fieldset>
+                    <legend>发送短信</legend>
+
+                    <div class="am-form-group">
+                        <label for="doc-ipt-pwd-1">义乌发货日期</label>
+                        <input type="text" class="am-form-field" id="doc-ipt-pwd-1" placeholder="义乌发货日期" data-am-datepicker readonly required />
+                    </div>
+                    <div class="am-form-group">
+                        <label for="doc-ipt-email-10">收货人手机号</label>
+                        <input type="text" class="" minlength="5" id="doc-ipt-email-10" placeholder="收货人手机号">
+                    </div>
+                    <div class="am-form-group">
+                        <label for="doc-ipt-email-1">收货人姓名</label>
+                        <input type="text" class="" minlength="1" id="doc-ipt-email-1" placeholder="收货人姓名">
+                    </div>
+                </fieldset>
+                <!--<div class="am-u-sm-10 am-u-sm-push-6">-->
+                    <p><button type="button" id="submit" class="am-btn am-btn-primary am-btn-block">>>>> 发送 <<<<</button></p>
+                <!--</div>-->
+            </form>
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+
+</div>
+</div>
+</div></div>
+{include file="public/foot" /}
+<script src="/admin/js/index.js"></script>
+<script src="/admin/js/sendShow.js"></script>
