@@ -32,12 +32,12 @@ and open the template in the editor.
         <li><a href="admin/index" class="am-icon-home">首页</a></li>
         <li class="am-active">{$title}</li>
     </ol>
-    <div class="tpl-portlet-components">
-        <div class="tpl-block am-scrollable-horizontal">
+    <div class="tpl-portlet-components" style="padding: 0px">
+        <!--<div class="tpl-block am-scrollable-horizontal">-->
             <table class="am-table am-table-bordered am-table-striped am-table-hover am-text-sm">
                 <thead>
                 <tr>
-                    <th>序号</th>
+                    <th class="am-hide-sm-only">序号</th>
                     <th class="am-hide-sm-only">发货日期</th>
                     <th>姓名/手机</th>
                     <th>货号</th>
@@ -48,9 +48,9 @@ and open the template in the editor.
                 <tbody id="form-data">
                 {volist name='data' id='item'}
                 <tr>
-                    <td> {$item.id}</td>
+                    <td class="am-hide-sm-only"> {$item.id}</td>
                     <td class="am-hide-sm-only"> {$item.date}</td>
-                    <td> {$item.name} / {$item.phone}</td>
+                    <td> <div>{$item.name}</div> <div>{$item.phone}</div></td>
                     <td> {$item.number}</td>
                     <td class="am-hide-sm-only"> {$item.city}</td>
                     <td> {$item.post_date}</td>
@@ -65,7 +65,7 @@ and open the template in the editor.
                     {$page}
                 </div>
             <!--</div>-->
-        </div>
+        <!--</div>-->
 
     </div>
 </div>
