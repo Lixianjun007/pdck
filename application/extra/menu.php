@@ -15,7 +15,7 @@ return [
     ],
     1 => [
         'title'   => '短信通知',
-        'url'     => '/admin/index',
+        'url'     => 'javascript:;',
         'submenu' => [
             0 => [
                 'title' => '发送短信',
@@ -26,6 +26,42 @@ return [
                 'url'   => Url::build('admin/sendmsg_show/historyShow'),
             ],
         ],
+    ],
+    2 => [
+        'title'   => '订单',
+        'url'     => 'javascript:;',
+        'submenu' => [
+            0 => [
+                'title' => '添加订单',
+                'url'   => Url::build('admin/order/add', 'local=yw'),
+            ],
+            1 => [
+                'title' => '订单列表',
+                'url'   => Url::build('admin/order/list', 'local=sh'),
+            ],
+//            2 => [
+//                'title' => '已支付订单',
+//                'url'   => Url::build('admin/getgoods/index', 'local=yk'),
+//            ],
+        ]
+    ],
+    3 => [
+        'title'   => '统计',
+        'url'     => 'javascript:;',
+        'submenu' => [
+            0 => [
+                'title' => '订单统计',
+                'url'   => Url::build('admin/system/user'),
+            ],
+            1 => [
+                'title' => '客户统计',
+                'url'   => Url::build('admin/system/role'),
+            ],
+//            2 => [
+//                'title' => '权限管理',
+//                'url'   => Url::build('admin/system/power'),
+//            ],
+        ]
     ],
 //    2 => [
 //        'title'   => '系统',
@@ -89,41 +125,6 @@ return [
 //            ],
 //        ]
 //    ],
-    5 => [
-        'title'   => '订单',
-        'url'     => 'javascript:;',
-        'submenu' => [
-            0 => [
-                'title' => '添加订单',
-                'url'   => Url::build('admin/getgoods/index', 'local=yw'),
-            ],
-            1 => [
-                'title' => '未支付订单',
-                'url'   => Url::build('admin/getgoods/index', 'local=sh'),
-            ],
-            2 => [
-                'title' => '已支付订单',
-                'url'   => Url::build('admin/getgoods/index', 'local=yk'),
-            ],
-        ]
-    ],
-    6 => [
-        'title'   => '统计',
-        'url'     => 'javascript:;',
-        'submenu' => [
-            0 => [
-                'title' => '订单统计',
-                'url'   => Url::build('admin/system/user'),
-            ],
-            1 => [
-                'title' => '客户统计',
-                'url'   => Url::build('admin/system/role'),
-            ],
-//            2 => [
-//                'title' => '权限管理',
-//                'url'   => Url::build('admin/system/power'),
-//            ],
-        ]
-    ],
+
     
 ];

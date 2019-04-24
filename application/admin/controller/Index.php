@@ -60,7 +60,7 @@ class Index extends Common {
         if (!$userInfo) {
             return $this->error('账号或者用户名不存在');
         }
-        if (!$userInfo['status'] != 1) {
+        if ($userInfo['status'] != 1) {
             return $this->error('账号已被停用');
         }
         if ($userInfo['passWd'] != md5($passWd)) {

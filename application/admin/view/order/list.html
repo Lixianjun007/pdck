@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+{include file="public/head" /}
+{include file="public/left" /}
+<div class="tpl-content-wrapper">
+    <div class="tpl-content-page-title am-hide-sm-only">
+        <h3>{$title}</h3>
+    </div>
+    <ol class="am-breadcrumb">
+        <li><a href="{:url('/admin/index')}" class="am-icon-home">首页</a></li>
+        <li class="am-active">{$title}</li>
+    </ol>
+    <div class="tpl-portlet-components" style="padding: 0px">
+        <form class="am-form">
+            <fieldset>
+                <ul class="am-avg-sm-2 am-avg-md-2 am-avg-lg-4 am-thumbnails">
+                    <li style="display: flex">
+                        <label for="custom_name" style="width: 80px">收货人</label>
+                        <input type="text" class="" id="custom_name" placeholder="搜索收货人姓名">
+                    </li>
+                    <li style="display: flex">
+                        <label for="number" style="width: 80px">编号</label>
+                        <input type="text" class="" id="number" placeholder="搜索货物编号">
+                    </li>
+                    <li style="display: flex">
+                        <label for="goods_from" style="width: 80px">收货地</label>
+                        <select id="goods_from" >
+                            <option value="option1">选项一...</option>
+                            <option value="option2">选项二.....</option>
+                            <option value="option3">选项三........</option>
+                        </select>
+                    </li>
+                    <li style="text-align: right">
+                        <button type="submit" class="am-btn am-btn-success">搜索</button>
+                    </li>
+
+                </ul>
+            </fieldset>
+        </form>
+        <hr/>
+
+    </div>
+</div>
+
+
+{include file="public/foot" /}
