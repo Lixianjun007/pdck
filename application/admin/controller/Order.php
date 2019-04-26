@@ -40,4 +40,17 @@ class Order extends Common
         return $this->fetch('list');
     }
 
+    /**
+     * 列表，带搜索
+     * @author lixianjun
+     * @return mixed
+     * Date: 2019/4/24
+     * Time: 16:54
+     */
+    public function listNotGive(){
+        $this->assign('title', '订单列表');
+
+        return $this->fetch('listNotGive');
+    }
+
 }

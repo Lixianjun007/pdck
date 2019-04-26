@@ -10,7 +10,6 @@
 namespace app\admin\logic;
 
 
-
 use app\admin\model\City;
 use Msg\send;
 use think\Db;
@@ -19,26 +18,28 @@ use think\Log;
 class SendMsg extends \app\admin\model\SendMsg
 {
 
-    public function addMsg($params){
+    public function addMsg($params)
+    {
         $result = '';
-        $name = $params['name'];
-        $phone = $params['phone'];
-        $date = $params['date'];
+        $name   = $params['name'];
+        $phone  = $params['phone'];
+        $date   = $params['date'];
         $number = $params['number'];
-        $city = $params['city'];
+        $city   = $params['city'];
 //        $is_post = $params['post'];
 //        $this->addData($name, $phone, $number, $date, $city);
-        if($this->doSend($name,$phone,$number,$city)){
-            $this->addData($name, $phone, $number, $date,$city,1);
+        if ($this->doSend($name, $phone, $number, $city)) {
+            $this->addData($name, $phone, $number, $date, $city, 1);
         }
         return true;
     }
 
-    public function getMsgDatas($params){
+    public function getMsgDatas($params)
+    {
         $result = $this->getDataLists($params);
-        if($result->count()){
+        if ($result->count()) {
             $cityModel = new City();
-            foreach ($result as $k => $v){
+            foreach ($result as $k => $v) {
                 $v['city'] = $cityModel->getCityName($v['city_id'])->city_name;
             }
         }
@@ -67,7 +68,15 @@ class SendMsg extends \app\admin\model\SendMsg
             $city = '上海';
         }
         $contend = "$name||$number||$city";
-        $result  = $obj->sendToMsg($contend, $phone);
+        if (date("H") > 18) {
+            //超过18点的时候，发送通知第二天
+            //64298 	尊敬的@，货号：@已从@发出，将在次日到达目的地。详细地址请搜索微信小程序“品弟货运”。
+            $result  = $obj->sendToMsg($contend, $phone,64298);
+        } else {
+            //当天发送
+            //65288 	尊敬的@，货号：@(@发出)今日已到托运部。详细地址请搜索微信小程序“品弟货运”。
+            $result = $obj->sendToMsg($contend, $phone, 65288);
+        }
         $results = json_decode($result, true);
         Log::record($result);
         Log::record($contend);

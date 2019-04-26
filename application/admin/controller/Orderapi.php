@@ -11,6 +11,9 @@ namespace app\admin\controller;
 
 
 use app\admin\Common;
+use app\admin\logic\OrderLogic;
+use think\Exception;
+use think\Request;
 
 class Orderapi extends Common
 {
@@ -21,12 +24,67 @@ class Orderapi extends Common
     }
 
     /**
+     * 添加订单
+     * @author lixianjun
+     * @return \think\Response
+     * Date: 2019/4/25
+     * Time: 16:41
+     */
+    public function add()
+    {
+        $name            = $this->request->param('post_name', '');
+        $phone           = $this->request->param('post_phone', '');
+        $number          = $this->request->param('post_number', '');
+        $froms           = $this->request->param('post_froms', '');
+        $tos             = $this->request->param('post_tos', '');
+        $price           = $this->request->param('post_price', 0);
+        $has_price       = $this->request->param('post_has_price', 0);
+        $has_pay_price   = $this->request->param('post_has_pay_price', 0);
+        $post_price      = $this->request->param('post_post_price', 0);
+        $invoicing_price = $this->request->param('post_invoicing_price', 0);
+        $arrears_price   = $this->request->param('post_arrears_price', 0);
+        $location        = $this->request->param('post_location', '');
+        $obj             = new OrderLogic();
+        try {
+            if ($number == '' || $name == '') {
+                throw new Exception('参数不齐');
+            }
+            $result = $obj->saveInfo($this->userInfo, $name, $phone, $number, $froms, $tos, $price, $has_price, $has_pay_price,
+                $post_price, $invoicing_price, $arrears_price, $location);
+            return $this->sendSuccess($result);
+        } catch (\Exception $e) {
+            return $this->sendSuccess($e->getMessage(), 400);
+        }
+    }
+
+
+    public function lists()
+    {
+        //type1: 未支付的订单    type2:已支付的订单   type3:某一天的订单
+        $type     = $this->request->param('type', 1);
+        $name     = $this->request->param('name', '');
+        $number   = $this->request->param('number', '');
+        $city_id  = $this->request->param('city_id', 0);
+        $date     = $this->request->param('date', false);
+        $pageSize = $this->request->param('page_size', false);
+        $obj      = new OrderLogic();
+        try {
+            $lists = $obj->getLists($type, $name, $number, $city_id, $date, $pageSize);
+            return $this->sendSuccess($lists);
+        } catch (\Exception $e) {
+            return $this->sendSuccess($e->getMessage(), 400);
+        }
+    }
+
+
+    /**
      * 删除
      * @author lixianjun
      * Date: 2019/4/24
      * Time: 16:51
      */
-    public function delete(){
+    public function delete()
+    {
 
     }
 
@@ -36,7 +94,8 @@ class Orderapi extends Common
      * Date: 2019/4/24
      * Time: 16:51
      */
-    public function pay(){
+    public function pay()
+    {
 
     }
 
@@ -46,7 +105,8 @@ class Orderapi extends Common
      * Date: 2019/4/24
      * Time: 16:51
      */
-    public function repay(){
+    public function repay()
+    {
 
     }
 
