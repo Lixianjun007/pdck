@@ -1,32 +1,42 @@
-$(function () {
-    getLists()
+window.onload = function (){
+getLists()
 
+}
 
-
-
-
-});
-
-
-function getLists(page = 1, pageSize = 10) {
+function getLists(page = 1, pageSize = 8) {
+    // $("#formListData").clear()
     $.ajax({
         url: "/admin/orderapi/lists",
         type: "POST",
-        // data: $("#submit-form").serialize(),
+        data:{
+            page_size:pageSize,
+            page: page,
+        },
         dataType: "json",
         context: document.body,
         success: function (data) {
             if(data.code === 200){
-                addFormHtml(data.data)
+                addFormHtml(data.data.data)
+                var _pager = new pager({
+                    el: '.footerp',
+                    idx: page,
+                    pageSize: pageSize,
+                    total: data.data.total,
+                    skipCall: function(idx, pageSize){
+                        getLists(idx,pageSize)
+                    }
+                }).init();
             }
         }
     })
 }
 
 function addFormHtml(data) {
+    var lists = '';
     $.each(data, function (index,item) {
-        $("#formListData").append(dataForm(item))
+        lists = lists + dataForm(item);
     })
+    $("#formListData").html(lists)
 }
 // actual_price: "0.00"
 // admin_id: 1
@@ -67,7 +77,7 @@ function dataForm(data) {
         '                        <li>欠款：'+ data.arrears_price +'</li>\n' +
         '                    </ul>\n' +
         '                    <div>手机号：'+ data.customer_phone +'</div>\n' +
-        '                    <div>直送地址：普陀区同普路1272号</div>\n' +
+        '                    <div>直送地址：'+data.location+'</div>\n' +
         '                </td>\n' +
         '                <td>\n' +
         '                    <form class="am-form" style="width: 70px">\n' +
@@ -96,5 +106,4 @@ function dataForm(data) {
         '                </td>\n' +
         '            </tr>'
     return html;
-
 }
