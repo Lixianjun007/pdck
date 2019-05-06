@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+{include file="public/head" /}
+{include file="public/left" /}
+<div class="tpl-content-wrapper">
+    <div class="tpl-content-page-title am-hide-sm-only">
+        <h3>{$title}</h3>
+    </div>
+    <ol class="am-breadcrumb">
+        <li><a href="{:url('/admin/index')}" class="am-icon-home">首页</a></li>
+        <li class="am-active">{$title}</li>
+    </ol>
+
+    <div class="tpl-portlet-components" style="padding: 0px">
+        <!--<div class="tpl-block ">-->
+        <form action="" class="am-form" id="submit-form">
+            <fieldset>
+                <ul class="am-form-group am-avg-sm-1 am-avg-md-2 am-avg-lg-2 am-thumbnails am-input-group-primary">
+                    <li style="display: flex" class="sssss">
+                        <span class="am-input-group-label " style="width: 70px">收货人</span>
+                        <input name="post_name" type="text"  class="am-form-field" placeholder="输入收货人姓名" required data-validation-message="必填"/>
+                    </li>
+                    <li style="display: flex"  class="sssss">
+                        <span class="am-input-group-label" style="width: 70px">号码</span>
+                        <input name="post_phone" type="text" class="am-form-field" placeholder="输入收货人号码">
+                    </li>
+                    <li style="display: flex"  class="sssss">
+                        <span class="am-input-group-label" style="width: 70px">编号</span>
+                        <input name="post_number" type="text" class="am-form-field" placeholder="输入货物编号"  required/>
+                    </li>
+                </ul>
+                <ul class="am-avg-sm-2 am-avg-md-2 am-avg-lg-2 am-thumbnails">
+                    <li style="display: flex">
+                        <label for="goods_from" style="width: 80px">发货地</label>
+                        <select name="post_froms" id="goods_from" style="width: 120px"  required min="1" >
+                            <option value="0">请选择发货地</option>
+                            <option value="1" selected>义乌</option>
+                            <option value="2">上海</option>
+                            <option value="3">永康</option>
+                        </select>
+                    </li>
+                    <li style="display: flex">
+                        <label for="goods_to" style="width: 80px">收货地</label>
+                        <select name="post_tos" id="goods_to" style="width: 120px"  required min="1" >
+                            <option value="0">请选择收货地</option>
+                            <option value="1">义乌</option>
+                            <option value="2" selected>上海</option>
+                            <option value="3">永康</option>
+                        </select>
+                        <span class="am-form-caret"></span>
+                    </li>
+                </ul>
+                <hr/>
+                <ul class="am-avg-sm-2 am-avg-md-2 am-avg-lg-3 am-thumbnails am-input-group-secondary">
+                    <li style="display: flex">
+                        <span class="am-input-group-label" style="width: 70px">代收</span>
+                        <input name="post_price" type="number" class="am-form-field" id="price" placeholder="代收">
+                    </li>
+                    <li style="display: flex">
+                        <span class="am-input-group-label" style="width: 70px">已收</span>
+                        <input name="post_has_price" type="number" class="am-form-field" id="has_price" placeholder="已收">
+                    </li>
+                    <li style="display: flex">
+                        <span class="am-input-group-label" style="width: 70px">中转</span>
+                        <input name="post_has_pay_price" type="number" class="am-form-field " id="has_pay_price" placeholder="中转">
+                    </li>
+                    <li style="display: flex">
+                        <span class="am-input-group-label" style="width: 70px">直送</span>
+                        <input name="post_post_price" type="number" class="am-form-field " id="post_price" placeholder="直送">
+                    </li>
+                    <li style="display: flex">
+                        <span class="am-input-group-label" style="width: 70px">代收款</span>
+                        <input name="post_invoicing_price" type="number" class="am-form-field " id="invoicing_price" placeholder="代收款">
+                    </li>
+                    <li style="display: flex">
+                        <span class="am-input-group-label" style="width: 70px">欠款</span>
+                        <input name="post_arrears_price" type="number" class="am-form-field " id="arrears_price" placeholder="欠款">
+                    </li>
+                </ul>
+                <div class="am-form-group am-input-group-secondary" style="display: flex">
+                    <span class="am-input-group-label" style="width: 110px">详细地址</span>
+                    <input name="post_location" type="text" class="" id="location" placeholder="输入详细地址">
+                </div>
+                <hr/>
+                <ul class="am-avg-sm-2 am-avg-md-2 am-avg-lg-4 am-thumbnails">
+                    <li>
+                        <button type="reset" class="am-btn am-btn-danger am-btn-block">重置</button>
+                    </li>
+                    <li>
+                        <button type="button" id="submit" class="am-btn am-btn-primary am-btn-block">提交</button>
+                    </li>
+                </ul>
+
+            </fieldset>
+        </form>
+
+        <!--</div>-->
+    </div>
+
+</div>
+
+
+{include file="public/foot" /}
+
+<script src="/admin/js/index.js"></script>
+<script src="/admin/js/order/add.js"></script>

@@ -34,6 +34,18 @@ class Common extends Controller {
         $this->userInfo = $user;
         $this->menu     = Config::get('menu');
 
+        if($this->userInfo['permission'] != 1){
+            if($this->userInfo['permission'] == 2){
+                unset($this->menu[3]);
+            }elseif ($this->userInfo['permission'] == 3){
+                unset($this->menu[1]);
+                unset($this->menu[3]);
+//                unset($this->menu[2][2]);
+            }else{
+             $this->menu = [];
+            }
+        }
+
         $this->assign('useradmin', $this->userInfo);
         $this->assign('leftmenu', $this->menu);
         return true;

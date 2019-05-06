@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+{include file="public/head" /}
+{include file="public/left" /}
+<div class="tpl-content-wrapper">
+    <div class="tpl-content-page-title">
+        <h3>{$title}</h3>
+    </div>
+    <ol class="am-breadcrumb">
+        <li><a href="{:url('/admin/index')}" class="am-icon-home">首页</a></li>
+        <li class="am-active">{$title}</li>
+    </ol>
+    <div class="tpl-portlet-components" style="padding: 0px">
+        <form class="am-form">
+            <fieldset>
+                <ul class="am-avg-sm-2 am-avg-md-2 am-avg-lg-4 am-thumbnails">
+                    <li style="display: flex">
+                        <label for="custom_name" style="width: 80px">收货人</label>
+                        <input type="text" class="" id="custom_name" placeholder="搜索收货人姓名">
+                    </li>
+                    <li style="display: flex">
+                        <label for="number" style="width: 80px">编号</label>
+                        <input type="text" class="" id="number" placeholder="搜索货物编号">
+                    </li>
+                    <li style="display: flex">
+                        <label for="goods_from" style="width: 80px">收货地</label>
+                        <select id="goods_from">
+                            <option value="option1">选项一...</option>
+                            <option value="option2">选项二.....</option>
+                            <option value="option3">选项三........</option>
+                        </select>
+                    </li>
+                    <li style="text-align: right">
+                        <button type="submit" class="am-btn am-btn-success">搜索</button>
+                    </li>
+
+                </ul>
+            </fieldset>
+        </form>
+        <hr/>
+
+        <table class="am-table am-table-bordered am-table-striped am-table-hover" style="font-size: small">
+            <thead>
+            <tr>
+                <th>用户信息</th>
+                <th>订单信息</th>
+                <th style="width: 80px">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="am-text-middle">
+                    <div>姓名：张三是</div>
+                    <div>编号：103-29</div>
+                    <div>手机号：17621753088</div>
+                    <div>上海->义乌</div>
+                </td>
+                <td>
+                    <ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 am-thumbnails">
+                        <li>代收：200</li>
+                        <li>已收：10</li>
+                        <li>中转：20</li>
+                        <li>直送：30</li>
+                        <li>代收款：40</li>
+                        <li>欠款：20</li>
+                    </ul>
+                    <div>直送地址：普陀区同普路1272号</div>
+                </td>
+                <td>
+                    <form class="am-form" style="width: 70px">
+                    <div class="am-form-group">
+                        <label for="doc-ipt-email-1">实收金额</label>
+                        <input type="email" class="" id="doc-ipt-email-1">
+                    </div>
+                        <button type="submit" class="am-btn am-btn-success">提交</button>
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td  class="am-text-middle">
+                    <div>姓名：</div>
+                    <div>编号：</div>
+                    <div>手机号：</div>
+                    <div>上海->义乌</div>
+                </td>
+                <td>
+                    <ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 am-thumbnails">
+                        <li>代收：</li>
+                        <li>已收：</li>
+                        <li>中转：</li>
+                        <li>直送：</li>
+                        <li>代收款：</li>
+                        <li>欠款：</li>
+                    </ul>
+                    <div>直送地址：</div>
+                </td>
+                <td>
+                    <form class="am-form" style="width: 70px">
+                        <div class="am-form-group">
+                            <label for="doc-ipt-email-1">实收金额</label>
+                            <input type="email" class="" id="doc-ipt-email-1">
+                        </div>
+                        <button type="submit" class="am-btn am-btn-success">提交</button>
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td class="am-text-middle">
+                    <div>姓名：</div>
+                    <div>编号：</div>
+                    <div>手机号：</div>
+                    <div>上海->义乌</div>
+                </td>
+                <td>
+                    <ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 am-thumbnails">
+                        <li>代收：</li>
+                        <li>已收：</li>
+                        <li>中转：</li>
+                        <li>直送：</li>
+                        <li>代收款：</li>
+                        <li>欠款：</li>
+                    </ul>
+                    <div>直送地址：</div>
+                </td>
+                <td>
+                    <form class="am-form" style="width: 70px">
+                        <div class="am-form-group">
+                            <label for="doc-ipt-email-1">实收金额</label>
+                            <input type="email" class="" id="doc-ipt-email-1">
+                        </div>
+                        <button type="submit" class="am-btn am-btn-success">提交</button>
+                    </form>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+
+
+    </div>
+</div>
+
+
+{include file="public/foot" /}

@@ -1,0 +1,22 @@
+@charset "utf-8";
+p.pager{ height: 20px; text-align: center; }
+p.pager span{ display: inline-block; vertical-align: middle; }
+p.pager a{ cursor: pointer; }
+p.pager .summary{ padding: 0 10px; line-height: 20px; font-size: 12px; color: #666; }
+p.pager .totle_page{ padding: 0 5px; font-style: normal; color: #2295da; }
+p.pager .link_box a{ vertical-align: middle; } 
+span.link_box .pre_page, span.link_box .next_page{ display: inline-block; width: 20px; height: 20px; background: url('../images/pagericon.png') no-repeat; }
+span.link_box .pre_page{ background-position: 3px -86px; }
+span.link_box .pre_page:hover{ background-position: -40px -86px; }
+span.link_box .next_page{ background-position: -17px -86px; }
+span.link_box .next_page:hover{ background-position: -62px -86px; }
+p.pager .pageidx{ display: inline-block; width: 20px; height: 20px; line-height: 20px; font-size: 12px; color: #666; text-align: center; }
+p.pager .pageidx.on{ background: url('../images/pagericon.png') no-repeat 0 0; color: #fff; }
+p.pager .pageidx:hover{  background: url('../images/pagericon.png') no-repeat 0 -30px; color: #fff; }
+p.pager .pageidx:active{  background: url('../images/pagericon.png') no-repeat 0 -60px; }
+p.pager .elips{ display: inline-block; width: 20px; cursor: default !important; }
+p.pager label{ display: inline-block; height: 20px; margin: 0 10px; font-size: 12px; color: #666; line-height: 20px; }
+input.skip_to{ width: 30px; height: 18px; padding: 0; margin: 0 5px; outline: none; vertical-align: top; }
+p.pager .skip_box .btn_skip{ display: inline-block; height: 20px; width: 32px; font-size: 12px; color: #fff; line-height: 20px; text-align: center; background: url('../images/pagericon.png') no-repeat -48px 0; }
+p.pager .skip_box .btn_skip:hover{ background-position: -48px -30px; }
+p.pager .skip_box .btn_skip:active{ background-position: -48px -60px; }

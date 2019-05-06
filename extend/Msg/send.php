@@ -17,14 +17,14 @@ class send
     protected $pwd        = '363bc24cb077337af12c49bb4';
     protected $templateId = 64298;
 
-    public function sendToMsg($content, $mobile)
+    public function sendToMsg($content, $mobile, $templateId = 64298)
     {
         $data['Account']    = $this->account;
         $data['Pwd']        = $this->pwd;
         $data['Content']    = $content;
         $data['Mobile']     = $mobile;
         $sign               = config('sign');
-        $data['TemplateId'] = 64298;
+        $data['TemplateId'] = $templateId;
         $data['SignId']     = $sign['yw_pd'];
 
         return $this->post($this->url, $data);

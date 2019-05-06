@@ -69,7 +69,7 @@
                             {/if}
                             <span>{$list.title}</span>
                         </a>
-                        <ul class="tpl-left-nav-sub-menu" <?php if($list['title'] == '统计' || $list['title'] == '系统'){?>  style="display: none;"<?php }else{?>  style="display: block;" <?php }?> >
+                        <ul class="tpl-left-nav-sub-menu" style="display: none;">
                             <li>
                                 {volist name="list['submenu']" id="listsub"}
                                 <a href="{$listsub.url}">

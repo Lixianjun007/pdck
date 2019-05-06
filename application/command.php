@@ -11,4 +11,5 @@
 
 return [
     'app\admin\command\sendMsgCommand'
+
 ];

@@ -37,6 +37,12 @@ class Index extends Common {
         return $this->fetch('login');
     }
 
+    /**
+     * 登陆验证
+     * @author lixianjun
+     * Date: 2019/4/24
+     * Time: 14:26
+     */
     public function logincheck() {
         $a = Request::instance()->isPost();
         if ($a == false) {
@@ -53,6 +59,9 @@ class Index extends Common {
         $userInfo = $Admin->getByuserName($userName);
         if (!$userInfo) {
             return $this->error('账号或者用户名不存在');
+        }
+        if ($userInfo['status'] != 1) {
+            return $this->error('账号已被停用');
         }
         if ($userInfo['passWd'] != md5($passWd)) {
             return $this->error('密码错误');
