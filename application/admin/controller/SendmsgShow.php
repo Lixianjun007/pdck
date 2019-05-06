@@ -40,7 +40,7 @@ class SendmsgShow extends Common
         if (\request()->isPost()) {
             $params = $this->request->only(['name', 'phone', 'date', 'number', 'post', 'city']);
             $obj = new SendMsg();
-            $result = $obj->addMsg($params);
+            $result = $obj->addMsg($params, $this->userInfo['id']);
             return $this->sendSuccess($result);
         }else{
             echo '请求错误';

@@ -18,7 +18,7 @@ use think\Log;
 class SendMsg extends \app\admin\model\SendMsg
 {
 
-    public function addMsg($params)
+    public function addMsg($params, $user_id)
     {
         $result = '';
         $name   = $params['name'];
@@ -29,7 +29,7 @@ class SendMsg extends \app\admin\model\SendMsg
 //        $is_post = $params['post'];
 //        $this->addData($name, $phone, $number, $date, $city);
         if ($this->doSend($name, $phone, $number, $city)) {
-            $this->addData($name, $phone, $number, $date, $city, 1);
+            $this->addData($name, $phone, $number, $date, $city, 1,$user_id);
         }
         return true;
     }

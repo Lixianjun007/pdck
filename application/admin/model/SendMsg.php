@@ -33,7 +33,7 @@ class SendMsg extends Model
      * Date: 2019/4/15
      * Time: 15:33
      */
-    public function addData($name, $phone, $number, $date, $city = 1,$is_post)
+    public function addData($name, $phone, $number, $date, $city = 1,$is_post,$admin_id = 1)
     {
         $data = [
             'city_id'    => $city,
@@ -42,6 +42,7 @@ class SendMsg extends Model
             'number'     => $number,
             'date'       => $date,
             'is_post'    => $is_post,
+            'admin_id'   => $admin_id,
             'post_date' => $this->_getNow(),
             'created_at' => $this->_getNow(),
         ];
