@@ -11,6 +11,7 @@ namespace app\admin\logic;
 
 
 use app\admin\model\City;
+use app\admin\model\Customer;
 use Msg\send;
 use think\Db;
 use think\Log;
@@ -30,6 +31,8 @@ class SendMsg extends \app\admin\model\SendMsg
 //        $this->addData($name, $phone, $number, $date, $city);
         if ($this->doSend($name, $phone, $number, $city)) {
             $this->addData($name, $phone, $number, $date, $city, 1,$user_id);
+            $obj = new Customer();
+            $obj->checkPhoneAndUserName($phone, $name);
         }
         return true;
     }

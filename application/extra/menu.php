@@ -25,6 +25,10 @@ return [
                 'title' => '查看已发送',
                 'url'   => Url::build('admin/sendmsg_show/historyShow'),
             ],
+            2 => [
+                'title' => '快速发送',
+                'url'   => Url::build('admin/fast_send/show'),
+            ],
         ],
     ],
     2 => [

@@ -37,4 +37,32 @@ class Customer extends Model {
         Db::table($this->table)->where('id', $id)->setInc($inc);
     }
 
+
+    public function checkPhoneAndUserName($phone, $name){
+        $record = $this->where([
+            'name' => $name,
+            'phone' => $phone
+        ])->find();
+        if($record == null){
+            $data['name']  = $name;
+            $data['phone'] = $phone;
+            $data['created_at'] = date('Y-m-d H:i:s');
+            $this->save($data);
+        }
+        return true;
+    }
+
+
+    public function getLists($name, $pageSize){
+        if($name){
+            $where = ['name' => ['like', "%$name%"]];
+        }else{
+            $where = 1;
+        }
+        $lists = $this->where($where)->order('name asc')->paginate($pageSize);
+        return $lists;
+    }
+
+
+
 }
